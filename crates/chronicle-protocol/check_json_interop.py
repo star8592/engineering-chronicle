@@ -48,3 +48,50 @@ with tempfile.TemporaryDirectory(prefix="chronicle-json-") as temporary:
         if rejected.returncode != 2 or rejected.stdout:
             raise SystemExit("Invalid input was not rejected without output")
 print(f"INTEROP_OK: {len(fixtures)} seeded valid fixtures match Node byte-for-byte; 3 invalid CLI inputs rejected")
+
+
+# Header CLI checks are separate from the valid-input Node encoding oracle.
+import copy
+
+header_fixture = {
+    "schema": "ec.statement-header.v0.1",
+    "project": "p1",
+    "position": {"source": "ci1", "epoch": "e1", "sequence": "9007199254740993"},
+    "kind": "test.failed",
+    "subject": "sha256:" + "a" * 64,
+}
+with tempfile.TemporaryDirectory() as header_dir:
+    header_path = Path(header_dir) / "header.json"
+    header_path.write_text(json.dumps(header_fixture), encoding="utf-8")
+    header_result = subprocess.run(
+        [str(ROOT / "target/debug/chronicle-cli"), "validate-header", str(header_path)],
+        capture_output=True, check=False,
+    )
+    assert header_result.returncode == 0, header_result.stderr
+    canonical_result = subprocess.run(
+        [str(ROOT / "target/debug/chronicle-cli"), "canonicalize", str(header_path)],
+        capture_output=True, check=True,
+    )
+    assert header_result.stdout == canonical_result.stdout
+    header_bad = []
+    for field in ["schema", "project", "position", "kind", "subject"]:
+        value = copy.deepcopy(header_fixture)
+        del value[field]
+        header_bad.append(json.dumps(value))
+    value = copy.deepcopy(header_fixture)
+    value["authorized"] = True
+    header_bad.append(json.dumps(value))
+    value = copy.deepcopy(header_fixture)
+    value["position"]["sequence"] = 1
+    header_bad.append(json.dumps(value))
+    header_bad.append(json.dumps(header_fixture).replace(
+        "{", '{"project":"attacker",', 1
+    ))
+    for invalid in header_bad:
+        header_path.write_text(invalid, encoding="utf-8")
+        result = subprocess.run(
+            [str(ROOT / "target/debug/chronicle-cli"), "validate-header", str(header_path)],
+            capture_output=True, check=False,
+        )
+        assert result.returncode == 2 and result.stdout == b"", result
+print("HEADER_CLI_OK: valid header matches canonicalize; 8 invalid headers rejected with empty stdout")

@@ -1,7 +1,9 @@
-//! Validated protocol primitives. No wire encoding or cryptographic verification yet.
+//! Validated protocol primitives, restricted encoding and experimental header candidates.
+//! No cryptographic verification or authorization yet.
 //!
 //! Parsing establishes syntax only; it never establishes identity or authorization.
 
+pub mod header;
 pub mod json;
 
 use std::fmt;
