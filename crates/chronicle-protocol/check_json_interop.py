@@ -155,3 +155,44 @@ with tempfile.TemporaryDirectory() as envelope_dir:
         result = run_envelope(value)
         assert result.returncode == 2 and result.stdout == b"", result
 print("ENVELOPE_CLI_OK: 4 encodings match independent Python PAE; 6 invalid envelopes rejected")
+
+
+# Stored independent signature fixture; CI needs only Python stdlib to run it.
+signature_fixture = json.loads((ROOT / "crates/chronicle-protocol/ed25519_fixture.json").read_text())
+with tempfile.TemporaryDirectory() as signature_dir:
+    signature_path = Path(signature_dir) / "envelope.json"
+    key_path = Path(signature_dir) / "public.bin"
+    public_key = bytes.fromhex(signature_fixture["public_key_hex"])
+
+    def match_signature(value, key):
+        signature_path.write_text(json.dumps(value), encoding="utf-8")
+        key_path.write_bytes(key)
+        return subprocess.run(
+            [str(ROOT / "target/debug/chronicle-cli"), "match-signature", str(signature_path), str(key_path)],
+            capture_output=True, check=False,
+        )
+
+    original = signature_fixture["envelope"]
+    result = match_signature(original, public_key)
+    assert result.returncode == 0 and result.stdout == b"SIGNATURE_MATCH_ONLY\n", result
+    hint_changed = copy.deepcopy(original)
+    hint_changed["signatures"][0]["keyid"] = "another-key"
+    result = match_signature(hint_changed, public_key)
+    assert result.returncode == 0 and result.stdout == b"SIGNATURE_MATCH_ONLY\n", result
+    invalid_matches = []
+    changed = copy.deepcopy(original)
+    payload = base64.b64decode(changed["payload"]).replace(b"test.failed", b"test.passed")
+    changed["payload"] = base64.b64encode(payload).decode()
+    invalid_matches.append((changed, public_key))
+    changed = copy.deepcopy(original)
+    sig = bytearray(base64.b64decode(changed["signatures"][0]["sig"]))
+    sig[0] ^= 1
+    changed["signatures"][0]["sig"] = base64.b64encode(sig).decode()
+    invalid_matches.append((changed, public_key))
+    invalid_matches.extend((original, key) for key in [
+        bytes(32), bytes([1]) + bytes(31), public_key[:31], public_key + b"x"
+    ])
+    for value, key in invalid_matches:
+        result = match_signature(value, key)
+        assert result.returncode == 2 and result.stdout == b"", result
+print("SIGNATURE_CLI_OK: independent signature and changed hint match; 6 invalid checks rejected")

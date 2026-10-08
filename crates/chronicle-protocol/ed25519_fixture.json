@@ -1,0 +1,14 @@
+{
+  "generator": "Python cryptography 46.0.5; synthetic test key, not production",
+  "public_key_hex": "197f6b23e16c8532c6abc838facd5ea789be0c76b2920334039bfa8b3d368d61",
+  "envelope": {
+    "payloadType": "application/vnd.engineering-chronicle.statement-header.v0.1+json",
+    "payload": "eyJraW5kIjoidGVzdC5mYWlsZWQiLCJwb3NpdGlvbiI6eyJlcG9jaCI6ImUxIiwic2VxdWVuY2UiOiIwIiwic291cmNlIjoiY2kxIn0sInByb2plY3QiOiJwMSIsInNjaGVtYSI6ImVjLnN0YXRlbWVudC1oZWFkZXIudjAuMSIsInN1YmplY3QiOiJzaGEyNTY6YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYSJ9",
+    "signatures": [
+      {
+        "keyid": "untrusted-hint",
+        "sig": "sFvGMyNFRe4ng8IqMQWXxNGk6n+ODM0Tm2kxtyy+byhtiaNbU8QV9tAs/g4xmtBE3nlItPuDR0Uou4z2mqnOCw=="
+      }
+    ]
+  }
+}

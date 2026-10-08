@@ -1,6 +1,6 @@
 # V0.1 协议实现进度
 
-状态：EC-002第四小步，完整wire protocol与来源信任尚未冻结。
+状态：EC-002第五小步，完整wire protocol与来源信任尚未冻结。
 
 已实现：受限标识、字符串形式u64序号、声明的SHA-256摘要格式、来源位置和平台位置分离；受限JSON解析及规范编码；实验性版本化 header candidate；CLI canonicalize / validate-header <文件>。
 
@@ -14,7 +14,7 @@
 
 ## 验证
 
-36项Rust测试；66个固定种子有效输入与独立Node编码器逐字节一致；编码CLI拒绝3个非法输入；header CLI接受1个有效输入并拒绝8个非法输入，所有拒绝均stdout为空。Node JSON.parse不检验重复键，仅用于有效输入互操作。边界负例由Rust测试和CLI拒绝测试负责。
+44项Rust测试；66个固定种子有效输入与独立Node编码器逐字节一致；编码CLI拒绝3个非法输入；header CLI接受1个有效输入并拒绝8个非法输入，所有拒绝均stdout为空。Node JSON.parse不检验重复键，仅用于有效输入互操作。边界负例由Rust测试和CLI拒绝测试负责。
 
 直接依赖固定serde 1.0.228与serde_json 1.0.151（MIT OR Apache-2.0），精确依赖树和checksum见Cargo.lock。参考：https://www.rfc-editor.org/rfc/rfc8785.html
 
@@ -37,3 +37,16 @@ schema 精确值为 `ec.statement-header.v0.1`。根对象仅允许并要求 sch
 新增不可变 HeaderEnvelopeCandidate、SignatureCandidate 与 DSSE v1 PAE 编码。CLI `envelope-pae <文件>` 输出精确待签字节；不执行签名核验。载荷必须是上述header的规范字节，payloadType固定；未知字段、非法Base64、非规范载荷与错误长度拒绝。完整字段、限制和兼容差异见 [ADR-0003](adr/ADR-0003.md)。
 
 新增base64精确依赖0.22.1（MIT OR Apache-2.0）；锁文件更新。4个CLI编码变体与独立Python PAE逐字节一致，6个非法封套拒绝且stdout为空。Rust包含DSSE官方PAE向量。此结果不证明Ed25519验签正确或来源获授权。
+
+## 签名匹配诊断
+
+新增 `verify_ed25519` 与 `HeaderEnvelopeCandidate::match_signature`。精确固定 ed25519-dalek 2.2.0，禁用默认feature，仅启用std，未启用legacy_compatibility、batch、hazmat或随机密钥生成。使用Pure Ed25519和verify_strict；显式拒绝低阶弱公钥。from_bytes采用库的ZIP-215点解码规则；此组合不声称实现完整RFC8032点接受规则。
+
+`CryptographicMatch`只绑定不可变封套、公钥字节和签名索引，不产生可信/授权标志。keyid不参与匹配，不能凭包内提示选择信任根。
+
+CLI `match-signature <封套文件> <公钥文件>` 读取外部精确32字节原始Ed25519公钥；最多读取33字节以拒绝超长文件。任一签名候选与该公钥匹配时输出 `SIGNATURE_MATCH_ONLY` 并退出0，否则退出2且stdout为空。此为单钥诊断，不支持授权政策、身份归属或多签门限。
+
+44项Rust测试包含RFC8032 §7.1前三个向量、64个逐字节签名篡改、弱钥/低阶R/非规范S、错误公钥、修改载荷及签原始载荷而非PAE的拒绝。已修正首次录入的第三个RFC向量错误。独立Python cryptography 46.0.5生成的固定签名fixture用于Rust及CLI交叉检查；CI执行fixture只需Python标准库，不依赖cryptography。CLI两个匹配用例及六个拒绝用例通过。
+
+来源登记、project/source/epoch/kind授权、撤销/轮换、完整Statement、Receipt和资产哈希仍未实现；M07部分完成、M08未完成。签名匹配不能证明subject资产存在或陈述真实。
+参考：https://docs.rs/ed25519-dalek/2.2.0/ed25519_dalek/struct.VerifyingKey.html

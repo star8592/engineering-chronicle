@@ -1,11 +1,12 @@
 //! Validated protocol primitives, restricted encoding and experimental header candidates.
-//! No cryptographic verification or authorization yet.
+//! Signature matching does not establish source identity or authorization.
 //!
 //! Parsing establishes syntax only; it never establishes identity or authorization.
 
 pub mod envelope;
 pub mod header;
 pub mod json;
+pub mod signature;
 
 use std::fmt;
 
