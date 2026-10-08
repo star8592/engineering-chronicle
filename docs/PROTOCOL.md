@@ -1,6 +1,6 @@
 # V0.1 协议实现进度
 
-状态：EC-002第三小步，完整wire protocol与来源信任尚未冻结。
+状态：EC-002第四小步，完整wire protocol与来源信任尚未冻结。
 
 已实现：受限标识、字符串形式u64序号、声明的SHA-256摘要格式、来源位置和平台位置分离；受限JSON解析及规范编码；实验性版本化 header candidate；CLI canonicalize / validate-header <文件>。
 
@@ -14,7 +14,7 @@
 
 ## 验证
 
-26项Rust测试；66个固定种子有效输入与独立Node编码器逐字节一致；编码CLI拒绝3个非法输入；header CLI接受1个有效输入并拒绝8个非法输入，所有拒绝均stdout为空。Node JSON.parse不检验重复键，仅用于有效输入互操作。边界负例由Rust测试和CLI拒绝测试负责。
+36项Rust测试；66个固定种子有效输入与独立Node编码器逐字节一致；编码CLI拒绝3个非法输入；header CLI接受1个有效输入并拒绝8个非法输入，所有拒绝均stdout为空。Node JSON.parse不检验重复键，仅用于有效输入互操作。边界负例由Rust测试和CLI拒绝测试负责。
 
 直接依赖固定serde 1.0.228与serde_json 1.0.151（MIT OR Apache-2.0），精确依赖树和checksum见Cargo.lock。参考：https://www.rfc-editor.org/rfc/rfc8785.html
 
@@ -31,3 +31,9 @@ schema 精确值为 `ec.statement-header.v0.1`。根对象仅允许并要求 sch
 `HeaderCandidate::parse` 先执行受限编码检查，再构建严格结构；重复键不会被通用JSON map静默覆盖。类型保持不可变，公开只读header与精确规范字节。CLI `validate-header <文件>` 成功时仅输出该header的规范字节，失败退出2且不输出stdout。名称与输出均不代表授权或可信状态。
 
 这是独立header草案，尚不是完整Statement envelope或签名输入规范；字段中的来源和摘要仍是调用者的声明。后续完整封套与签名域需另行版本化。M07仍部分完成，M08仍未完成。
+
+## 实验性 header envelope
+
+新增不可变 HeaderEnvelopeCandidate、SignatureCandidate 与 DSSE v1 PAE 编码。CLI `envelope-pae <文件>` 输出精确待签字节；不执行签名核验。载荷必须是上述header的规范字节，payloadType固定；未知字段、非法Base64、非规范载荷与错误长度拒绝。完整字段、限制和兼容差异见 [ADR-0003](adr/ADR-0003.md)。
+
+新增base64精确依赖0.22.1（MIT OR Apache-2.0）；锁文件更新。4个CLI编码变体与独立Python PAE逐字节一致，6个非法封套拒绝且stdout为空。Rust包含DSSE官方PAE向量。此结果不证明Ed25519验签正确或来源获授权。

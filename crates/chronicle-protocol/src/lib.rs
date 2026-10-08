@@ -3,6 +3,7 @@
 //!
 //! Parsing establishes syntax only; it never establishes identity or authorization.
 
+pub mod envelope;
 pub mod header;
 pub mod json;
 

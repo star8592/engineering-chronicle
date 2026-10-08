@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-EC-001 工程初始化与首个提交CI已完成。协议crate已实现严格输入类型、受限JSON编码和实验性版本化header校验（见 docs/PROTOCOL.md）；CLI 提供 canonicalize / validate-header 文件命令；尚未实现账本、签名、证据核验、数据库、发布门禁或工程重演。基础 CI 通过也不代表 M01–M14 产品验收通过。
+EC-001 工程初始化与首个提交CI已完成。协议crate已实现严格输入类型、受限JSON编码和实验性版本化header/封套解析（见 docs/PROTOCOL.md）；CLI 提供 canonicalize / validate-header / envelope-pae 文件命令；尚未实现账本、签名、证据核验、数据库、发布门禁或工程重演。基础 CI 通过也不代表 M01–M14 产品验收通过。
 
 ## 首个产品闭环
 
@@ -31,6 +31,7 @@ python3 crates/chronicle-protocol/check_json_interop.py
 - [GPT-6.1 独立评审](docs/genesis/GENESIS-REVIEW-0001.md)
 - [首版架构决策](docs/adr/ADR-0001.md)
 - [开源与商业路线](docs/adr/ADR-0002.md)
+- [实验封套与待签字节](docs/adr/ADR-0003.md)
 - [里程碑](docs/MILESTONES.md)
 
 历史档案记录思想与建议，不能替代运行证据。签名和完整性证明不保证陈述真实或软件绝对正确。

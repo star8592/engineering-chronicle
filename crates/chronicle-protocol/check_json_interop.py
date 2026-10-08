@@ -95,3 +95,63 @@ with tempfile.TemporaryDirectory() as header_dir:
         )
         assert result.returncode == 2 and result.stdout == b"", result
 print("HEADER_CLI_OK: valid header matches canonicalize; 8 invalid headers rejected with empty stdout")
+
+
+# Independent Python PAE oracle: source bytes are retained, never reserialized.
+import base64
+
+header_canonical = json.dumps(
+    header_fixture, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+).encode("utf-8")
+envelope_type = "application/vnd.engineering-chronicle.statement-header.v0.1+json"
+expected_pae = (
+    b"DSSEv1 " + str(len(envelope_type.encode())).encode() + b" "
+    + envelope_type.encode() + b" " + str(len(header_canonical)).encode() + b" "
+    + header_canonical
+)
+envelope_fixture = {
+    "payloadType": envelope_type,
+    "payload": base64.b64encode(header_canonical).decode(),
+    "signatures": [{"keyid": "ci-key", "sig": base64.b64encode(bytes([255]) * 64).decode()}],
+}
+with tempfile.TemporaryDirectory() as envelope_dir:
+    envelope_path = Path(envelope_dir) / "envelope.json"
+
+    def run_envelope(value):
+        envelope_path.write_text(json.dumps(value), encoding="utf-8")
+        return subprocess.run(
+            [str(ROOT / "target/debug/chronicle-cli"), "envelope-pae", str(envelope_path)],
+            capture_output=True, check=False,
+        )
+
+    for encode in [base64.b64encode, base64.urlsafe_b64encode]:
+        for padded in [True, False]:
+            value = copy.deepcopy(envelope_fixture)
+            for field, raw in [("payload", header_canonical), ("sig", bytes([255]) * 64)]:
+                encoded = encode(raw).decode()
+                if not padded:
+                    encoded = encoded.rstrip("=")
+                if field == "payload":
+                    value[field] = encoded
+                else:
+                    value["signatures"][0][field] = encoded
+            result = run_envelope(value)
+            assert result.returncode == 0 and result.stdout == expected_pae, result
+    bad_envelopes = []
+    for field, bad in [
+        ("payloadType", "application/json"),
+        ("payload", "!"),
+        ("payload", base64.b64encode(b" " + header_canonical).decode()),
+        ("signatures", []),
+        ("trusted", True),
+    ]:
+        value = copy.deepcopy(envelope_fixture)
+        value[field] = bad
+        bad_envelopes.append(value)
+    value = copy.deepcopy(envelope_fixture)
+    value["signatures"][0]["sig"] = base64.b64encode(bytes(63)).decode()
+    bad_envelopes.append(value)
+    for value in bad_envelopes:
+        result = run_envelope(value)
+        assert result.returncode == 2 and result.stdout == b"", result
+print("ENVELOPE_CLI_OK: 4 encodings match independent Python PAE; 6 invalid envelopes rejected")
