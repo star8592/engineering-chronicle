@@ -25,3 +25,6 @@ jobs:
           RUSTDOCFLAGS: -D warnings
       - run: cargo run --locked -p chronicle-cli -- --help
       - run: cargo run --locked -p chronicle-verifier -- --help
+      - run: cargo build --locked -p chronicle-cli
+      - run: node --version
+      - run: python3 crates/chronicle-protocol/check_json_interop.py

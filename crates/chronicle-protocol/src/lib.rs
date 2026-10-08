@@ -2,6 +2,8 @@
 //!
 //! Parsing establishes syntax only; it never establishes identity or authorization.
 
+pub mod json;
+
 use std::fmt;
 
 /// A bounded, opaque identifier, never a filesystem path.

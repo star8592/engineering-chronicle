@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-EC-001 工程初始化与首个提交CI已完成。协议crate开始实现严格输入类型（见 docs/PROTOCOL.md）；CLI 只提供项目状态说明；尚未实现账本、签名、证据核验、数据库、发布门禁或工程重演。基础 CI 通过也不代表 M01–M14 产品验收通过。
+EC-001 工程初始化与首个提交CI已完成。协议crate已实现严格输入类型和受限JSON编码（见 docs/PROTOCOL.md）；CLI 提供 canonicalize 文件命令；尚未实现账本、签名、证据核验、数据库、发布门禁或工程重演。基础 CI 通过也不代表 M01–M14 产品验收通过。
 
 ## 首个产品闭环
 
@@ -21,6 +21,8 @@ cargo test --workspace --locked
 cargo doc --workspace --no-deps --locked
 cargo run --locked -p chronicle-cli -- --help
 cargo run --locked -p chronicle-verifier -- --help
+cargo build --locked -p chronicle-cli
+python3 crates/chronicle-protocol/check_json_interop.py
 ```
 
 ## 历史与边界
