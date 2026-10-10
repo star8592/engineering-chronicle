@@ -1,0 +1,742 @@
+{
+  "format": "chronicle-cargo-snapshots/1",
+  "repository": "star8592/engineering-chronicle",
+  "origin": "git-show committed objects; not working tree",
+  "snapshots": [
+    {
+      "commit": "ca8f7f370b2769b11a8d3a148d193f5290479863",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "d1dccbf3ec97c7132cab6c69abcb898b96a55379b9fc01fa9d24b28fbf1a59b0",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "99622456a9d09a3a38ab1dd0835856302ff8c6475d4b4f40b37e2171c5dcca91",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "baba9997c9821ae01855acbd74d336e703395065",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "d1dccbf3ec97c7132cab6c69abcb898b96a55379b9fc01fa9d24b28fbf1a59b0",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "99622456a9d09a3a38ab1dd0835856302ff8c6475d4b4f40b37e2171c5dcca91",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "78f066d25868edba84d183937cc12b7f5c1bce2d",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "01c67dca6b093722c96b78259f4790bf4dc9fedac01b18dc86bd93639e75fe6c",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "b16bf82b2a22f7007a85d6aed7561d8a10b364ce",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "01c67dca6b093722c96b78259f4790bf4dc9fedac01b18dc86bd93639e75fe6c",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "41adc4fe9dba1320df197d385331fd376910b56e",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "b43c1853ad57d77a1b6a2942bac22e0d49cbf75e0ed4466945a0997d3ef56b3a",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\nbase64 = \"=0.22.1\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151",
+              "base64": "=0.22.1"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "b10b46ccce562028e41a688af423f0726e0f16d8",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "afe09998ebf654b4d0a32360aa6d91655c5ac8fa6df799208570dd42a45a8445",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\nbase64 = \"=0.22.1\"\ned25519-dalek = { version = \"=2.2.0\", default-features = false, features = [\"std\"] }\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151",
+              "base64": "=0.22.1",
+              "ed25519-dalek": {
+                "version": "=2.2.0",
+                "default-features": false,
+                "features": [
+                  "std"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
