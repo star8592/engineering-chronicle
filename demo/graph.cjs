@@ -28,5 +28,11 @@ function cargo(snapshot,event){
  return {nodes,edges,scope:'真实 Cargo 声明依赖 · 仅清单层级，不代表运行调用或完整代码架构'};
 }
 function delta(before,after){const b=new Map(before.nodes.map(n=>[n.id,n]));const a=new Map(after.nodes.map(n=>[n.id,n]));const key=e=>e.from+'→'+e.to;const be=new Set(before.edges.map(key));const ae=new Set(after.edges.map(key));return {added:after.nodes.filter(n=>!b.has(n.id)).map(n=>n.id),removed:before.nodes.filter(n=>!a.has(n.id)).map(n=>n.id),changed:after.nodes.filter(n=>b.has(n.id)&&(b.get(n.id).status!==n.status||b.get(n.id).fingerprint!==n.fingerprint)).map(n=>n.id),edgesAdded:after.edges.filter(e=>!be.has(key(e))).length,edgesRemoved:before.edges.filter(e=>!ae.has(key(e))).length}}
-const api={project,cargo,delta};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
+function neighborhood(g,id){
+ if(!g.nodes.some(n=>n.id===id))return null;
+ const key=e=>e.from+'→'+e.to;
+ function walk(reverse){const seen=new Set([id]),edges=new Set(),queue=[id];for(let i=0;i<queue.length;i++){for(const e of g.edges){if((reverse?e.to:e.from)!==queue[i])continue;edges.add(key(e));const next=reverse?e.from:e.to;if(!seen.has(next)){seen.add(next);queue.push(next)}}}seen.delete(id);return {nodes:[...seen],edges:[...edges]}}
+ const dependencies=walk(false),dependents=walk(true);return {id,dependencies,dependents,directDependencies:[...new Set(g.edges.filter(e=>e.from===id&&e.to!==id).map(e=>e.to))],directDependents:[...new Set(g.edges.filter(e=>e.to===id&&e.from!==id).map(e=>e.from))]};
+}
+const api={project,cargo,delta,neighborhood};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
 })(typeof globalThis==='object'?globalThis:this);
