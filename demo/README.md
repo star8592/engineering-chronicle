@@ -53,3 +53,9 @@ node demo/check-state.cjs
 - 大历史图只投影当前位置附近六条记录，完整记录仍在时间轴可查。图按容器宽度重新布局，支持减少动画的系统设置。
 
 检查：`node demo/check-graph.cjs`、`node demo/check-state.cjs`、`node demo/check-bundle.cjs`。真实浏览器布局和动画验收仍待完成，不能以模型测试代替。
+
+## V0.5：真实 Cargo 声明依赖演化
+
+从六次已提交Git对象读取根清单与四个crate清单，保存原文、SHA-256和解析值。真实模式按精确commit选择清单快照：4个初始模块，随后增加serde/serde_json、base64、ed25519-dalek声明依赖；CLI→protocol依赖边在78f066d出现。节点点击查看清单原文与精确源码链接，边链接到声明它的清单。
+
+`node demo/check-cargo.cjs`验证六个快照的原文字节摘要、图节点/边数量、正确端点、引入/移除与清单更新。运行时调用、函数级依赖、Cargo完整解析依赖树与实时订阅未采集；不要将本图称为完整运行架构。当前工作区复测仍未绑定已提交快照。

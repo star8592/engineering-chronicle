@@ -1,5 +1,5 @@
 const {parse,parseStrict}=require('./bundle.cjs');const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
-const html=fs.readFileSync('demo/index.html','utf8');const observation=JSON.parse(html.match(/let observation=(.*);\nlet realEvents=/)[1]);const history=JSON.parse(html.match(/let realEvents=(.*);\nlet events=/)[1]);
+const html=fs.readFileSync('demo/index.html','utf8');const observation=JSON.parse(html.match(/let observation=(.*);\nlet realEvents=/)[1]);const history=JSON.parse(html.match(/let realEvents=(.*);\nconst cargoArchive=/)[1]);
 const pack={format:'chronicle-observation/1',demo:false,origin:'test',signature:null,authorization_verified:false,release_qualified:false,observation,reference_sha256:crypto.createHash('sha256').update(observation.output).digest('hex'),inspection:{pass:true},history};
 assert.equal(parse(JSON.stringify(pack)).history.length,7);assert.equal(parse(JSON.stringify(pack)).inspection,undefined);
 for(const bad of ['{"a":1,"a":2}','{"a":1,"\\u0061":2}','{"v":{"x":1,"x":2}}','{}{}','[1,]'])assert.throws(()=>parseStrict(bad));assert.throws(()=>parseStrict('['.repeat(20)+'0'+']'.repeat(20)));assert.throws(()=>parseStrict(' '.repeat(1048577)));assert.deepEqual(parseStrict('{"a":"\\\"","b":[null,true,3]}'),{a:'"',b:[null,true,3]});

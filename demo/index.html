@@ -3,11 +3,11 @@
 <style>
 :root{color-scheme:dark;--bg:#0b1019;--panel:#111b29;--line:#273344;--text:#e5edf6;--muted:#91a3bb;--mint:#63d6b5;--red:#ff8a91;--blue:#8aaeff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,"Microsoft YaHei",sans-serif}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:3px}button:disabled{opacity:.4;cursor:default}.shell{max-width:1440px;margin:auto;padding:28px 36px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:22px}.brand{font-size:20px;font-weight:650;letter-spacing:-.5px}.brand span{color:var(--mint)}.tag{color:var(--muted);font-size:12px;border:1px solid var(--line);padding:5px 10px;border-radius:30px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:32px 0 25px}h1{font-size:30px;line-height:1.25;margin:8px 0 10px;letter-spacing:-1px}h2{font-size:17px;margin:0 0 18px}.eyebrow{font-size:12px;letter-spacing:2px;color:var(--mint)}p{margin:0;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:9px}button,select{background:#192637;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px 14px}.primary{background:var(--mint);color:#09271f;border-color:var(--mint);font-weight:650}.grid{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}.panelhead{display:flex;justify-content:space-between;gap:12px}.small{font-size:12px;color:var(--muted)}.timeline{display:grid;gap:8px}.event{width:100%;text-align:left;display:grid;grid-template-columns:34px 1fr auto;gap:13px;align-items:center;background:transparent;padding:13px;border:1px solid transparent}.event.selected{background:#1b2a3d;border-color:#415775}.event.future{opacity:.4}.num{border:1px solid var(--line);border-radius:50%;width:30px;height:30px;display:grid;place-items:center;color:var(--muted)}.event.selected .num{color:var(--mint);border-color:var(--mint)}.title{font-weight:600}a{color:var(--blue)}.event .small{overflow-wrap:anywhere;display:block}.event>span{min-width:0}.fail{color:var(--red)}.ok{color:var(--mint)}.info{color:var(--blue)}.badge{font-size:12px;border-radius:5px;background:#203248;padding:3px 8px}.detail{min-height:218px}.detail h3{font-size:22px;margin:0 0 12px}.meta{display:grid;grid-template-columns:85px 1fr;gap:8px;font-size:13px;margin:18px 0}.meta dt{color:var(--muted)}.meta dd{margin:0;overflow-wrap:anywhere}pre{background:#0b1320;border:1px solid var(--line);border-radius:9px;padding:14px;font:12px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:#b9cbe1;margin:0;max-height:300px;overflow:auto}.evidence{margin-top:20px}.controls{display:flex;align-items:center;gap:10px;margin:18px 0;flex-wrap:wrap}.checks{display:grid;gap:9px;margin-top:15px}.check{display:flex;justify-content:space-between;gap:10px;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:8px}.result{border-radius:10px;background:#192637;padding:15px;margin-top:17px}.result strong{display:block;font-size:18px}.progress{height:4px;background:#243143;margin:18px 0 8px;border-radius:3px}.progress i{display:block;background:var(--mint);height:100%;transition:width .2s}.footer{margin-top:20px;font-size:12px;color:var(--muted);display:flex;gap:15px;justify-content:space-between}.notice{padding:12px 16px;background:#182332;border-left:3px solid var(--blue);border-radius:6px;color:#b3c4db;font-size:13px;margin-top:20px}@media(max-width:800px){.shell{padding:18px}.grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}h1{font-size:26px}.panel{padding:18px}.brand{font-size:17px}.footer{flex-direction:column;gap:5px}.event{grid-template-columns:30px 1fr auto;padding:10px 4px;gap:9px}}
 
-.graph-panel{margin:20px 0;padding:24px;background:radial-gradient(ellipse at top,#152939,#111b29 65%)}.graph-stage{position:relative;width:100%;margin-top:12px;overflow:hidden;transition:height .25s;background-image:radial-gradient(#2c3b50 1px,transparent 1px);background-size:22px 22px;border-radius:10px}.graph-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.graph-node{position:absolute;width:182px;min-height:78px;text-align:left;background:#16283b;border:1px solid #45617c;border-radius:12px;padding:12px;transition:left .35s ease,top .35s ease,border-color .3s,background .3s;z-index:1;box-shadow:0 8px 22px #0003}.graph-node .small{display:block;margin-top:4px}.graph-node.selected{border-color:var(--mint);background:#193b3c}.graph-node.failed{border-color:var(--red);background:#392435}.graph-node.passed{border-color:var(--mint)}.graph-node.observed{border-color:var(--blue)}.graph-node.enter{animation:graph-enter .45s ease both}.graph-node.exit{opacity:0;transform:scale(.9);transition:opacity .2s,transform .2s;pointer-events:none}.graph-edge{stroke:#58728f;stroke-width:2;fill:none}.graph-edge.order,.graph-edge.retained{stroke-dasharray:6 6}.graph-edge.active{stroke:var(--mint);stroke-width:3;animation:edge-arrive .5s ease}.graph-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 0}.graph-controls input{flex:1;min-width:120px;accent-color:var(--mint)}#graph-change{white-space:normal;max-width:220px}.graph-node .title{font-size:14px;overflow-wrap:anywhere}.graph-node:focus-visible{outline:3px solid var(--blue);outline-offset:3px}@keyframes graph-enter{from{opacity:0;transform:scale(.82) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes edge-arrive{from{stroke-opacity:.1}to{stroke-opacity:1}}@media(prefers-reduced-motion:reduce){.graph-node,.graph-stage{transition:none}.graph-node.enter,.graph-edge.active{animation:none}}@media(max-width:800px){.graph-panel{padding:16px}.panelhead{flex-wrap:wrap}}
+.graph-panel{margin:20px 0;padding:24px;background:radial-gradient(ellipse at top,#152939,#111b29 65%)}.graph-stage{position:relative;width:100%;margin-top:12px;overflow:hidden;transition:height .25s;background-image:radial-gradient(#2c3b50 1px,transparent 1px);background-size:22px 22px;border-radius:10px}.graph-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.graph-node{position:absolute;width:182px;min-height:78px;text-align:left;background:#16283b;border:1px solid #45617c;border-radius:12px;padding:12px;transition:left .35s ease,top .35s ease,border-color .3s,background .3s;z-index:1;box-shadow:0 8px 22px #0003}.graph-node .small{display:block;margin-top:4px}.graph-node.selected{border-color:var(--mint);background:#193b3c}.graph-node.failed{border-color:var(--red);background:#392435}.graph-node.changed{border-color:var(--blue);box-shadow:0 0 0 3px #8aaeff33}.graph-node.passed{border-color:var(--mint)}.graph-node.observed{border-color:var(--blue)}.graph-node.enter{animation:graph-enter .45s ease both}.graph-node.exit{opacity:0;transform:scale(.9);transition:opacity .2s,transform .2s;pointer-events:none}.graph-edge{stroke:#58728f;stroke-width:2;fill:none}.graph-edge.order,.graph-edge.retained{stroke-dasharray:6 6}.graph-edge.active{stroke:var(--mint);stroke-width:3;animation:edge-arrive .5s ease}.graph-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 0}.graph-controls input{flex:1;min-width:120px;accent-color:var(--mint)}#graph-change{white-space:normal;max-width:220px}.graph-node .title{font-size:14px;overflow-wrap:anywhere}.graph-node:focus-visible{outline:3px solid var(--blue);outline-offset:3px}@keyframes graph-enter{from{opacity:0;transform:scale(.82) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes edge-arrive{from{stroke-opacity:.1}to{stroke-opacity:1}}@media(prefers-reduced-motion:reduce){.graph-node,.graph-stage{transition:none}.graph-node.enter,.graph-edge.active{animation:none}}@media(max-width:800px){.graph-panel{padding:16px}.panelhead{flex-wrap:wrap}}
 </style></head><body><main class="shell">
-<header><div class="brand"><span>◈</span> Engineering Chronicle <small class="small">/ 工程纪事</small></div><span class="tag">V0.4 · 动态工程图</span></header>
+<header><div class="brand"><span>◈</span> Engineering Chronicle <small class="small">/ 工程纪事</small></div><span class="tag">V0.5 · 真实依赖演化</span></header>
 <section class="hero"><div><div class="eyebrow">每一次改变，都有据可查</div><h1>让工程变化，直接发生在眼前。</h1><p>动态图回放 · 变更高亮 · 点击追查证据</p></div><div class="actions"><button id="play" class="primary">▶ 播放历史</button><button id="next">下一步 →</button><button id="reset">回到起点</button></div></section>
-<div class="controls"><label for="dataset">查看记录</label><select id="dataset"><option value="demo">失败与修复 · 示例实验</option><option value="real">真实工程快照 · Z890</option></select><span class="small" id="data-origin"></span></div><div class="controls"><label for="bundle-file">导入项目记录包</label><input id="bundle-file" type="file" accept=".json,application/json"><span id="import-status" class="small" role="status" aria-live="polite">本地读取 · 最大 1 MiB · 不上传</span></div><section class="panel graph-panel"><div class="panelhead"><div><h2>工程演化图</h2><p id="graph-scope" class="small"></p></div><span id="graph-change" class="tag" role="status" aria-live="polite"></span></div><div id="graph-stage" class="graph-stage" aria-label="可交互的工程历史图"><svg id="graph-edges" aria-hidden="true"></svg><div id="graph-nodes"></div></div><div class="graph-controls"><label for="history-scrub">历史位置</label><input id="history-scrub" type="range" min="0" max="5" value="0"><span id="graph-step" class="small"></span></div><div class="small">实线：示例中声明的依据关系　虚线：展示顺序／保留的旧证据　红色：失败或证据异常</div></section><div class="grid"><section class="panel"><div class="panelhead"><h2>交付时间轴</h2><span class="small"><span id="project-name">engineering-chronicle</span></span></div><div id="timeline" class="timeline"></div><div class="progress"><i id="bar"></i></div><div id="position" class="small"></div></section>
+<div class="controls"><label for="dataset">查看记录</label><select id="dataset"><option value="real">真实 Cargo 依赖演化</option><option value="demo">失败与修复 · 示例实验</option></select><span class="small" id="data-origin"></span></div><div class="controls"><label for="bundle-file">导入项目记录包</label><input id="bundle-file" type="file" accept=".json,application/json"><span id="import-status" class="small" role="status" aria-live="polite">本地读取 · 最大 1 MiB · 不上传</span></div><section class="panel graph-panel"><div class="panelhead"><div><h2>工程演化图</h2><p id="graph-scope" class="small"></p></div><span id="graph-change" class="tag" role="status" aria-live="polite"></span></div><div id="graph-stage" class="graph-stage" aria-label="可交互的工程历史图"><svg id="graph-edges" aria-label="依赖关系与源码链接"></svg><div id="graph-nodes"></div></div><div class="graph-controls"><label for="history-scrub">历史位置</label><input id="history-scrub" type="range" min="0" max="5" value="0"><span id="graph-step" class="small"></span></div><div class="small">实线：示例中声明的依据关系　真实实线：Cargo 声明依赖 · 虚线：展示顺序／示例旧证据　红色：失败或证据异常</div></section><div class="grid"><section class="panel"><div class="panelhead"><h2>交付时间轴</h2><span class="small"><span id="project-name">engineering-chronicle</span></span></div><div id="timeline" class="timeline"></div><div class="progress"><i id="bar"></i></div><div id="position" class="small"></div></section>
 <section class="panel"><div class="panelhead"><h2>事件与依据</h2><span class="tag" id="record-kind">真实快照</span></div><div id="detail" class="detail"></div><pre id="log"></pre></section></div>
 <section class="panel evidence"><div class="panelhead"><div><h2>交付证据检查</h2><p class="small"><span id="check-description">检查快照摘要、测试观察与版本绑定边界。</span></p></div><button id="export">导出当前记录包 ↓</button></div><div class="controls"><label for="scenario">证据状态</label><select id="scenario"><option value="normal">正常证据</option><option value="tampered">复测日志被修改</option><option value="missing">复测日志缺失</option><option value="stale">证据对应旧提交</option></select><button id="verify" class="primary">运行检查</button><span id="mode" class="small">检查尚未运行</span></div><div id="checks" class="checks"></div><div id="result" class="result" role="status" aria-live="polite"><strong>等待检查</strong><span class="small">可在任意历史节点检查当时已出现的证据。</span></div></section>
 <div class="notice" id="boundary"></div><footer class="footer"><span>本地交互 · 无外部依赖 · 无数据上传</span><span>Engineering Chronicle / 可验证交付记录</span></footer>
@@ -61,8 +61,18 @@ function project(events,cursor,mode){
  const edges=nodes.slice(1).map((n,i)=>({from:nodes[i].id,to:n.id,at:n.at,kind:'order'}));
  return {nodes,edges,scope:'真实记录演化 · 虚线仅表示采集展示顺序；架构依赖未采集'};
 }
-function delta(before,after){const b=new Map(before.nodes.map(n=>[n.id,n]));const a=new Map(after.nodes.map(n=>[n.id,n]));return {added:after.nodes.filter(n=>!b.has(n.id)).map(n=>n.id),removed:before.nodes.filter(n=>!a.has(n.id)).map(n=>n.id),changed:after.nodes.filter(n=>b.has(n.id)&&b.get(n.id).status!==n.status).map(n=>n.id)}}
-const api={project,delta};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
+function cargo(snapshot,event){
+ const rootManifest=snapshot.manifests.find(m=>m.path==='Cargo.toml');
+ const packages=snapshot.manifests.filter(m=>m.parsed.package);const names=new Set(packages.map(m=>m.parsed.package.name));
+ const slots={'chronicle-cli':[0,0],'chronicle-verifier':[1,0],'chronicle-core':[0,1],'chronicle-protocol':[1,1]};const nodes=[],edges=[];let external=0;
+ for(const m of packages){const name=m.parsed.package.name;const [col,lane]=slots[name]||[0,0];nodes.push({id:name,label:name.replace('chronicle-',''),detail:'模块 · Cargo 清单',event,col,lane,fingerprint:m.sha256,evidence:{commit:snapshot.commit,...m}})}
+ for(const m of packages){for(const [dependency,spec] of Object.entries(m.parsed.dependencies||{})){const resolved=typeof spec==='object'&&spec.workspace?rootManifest.parsed.workspace.dependencies[dependency]:spec;const version=typeof resolved==='string'?resolved:resolved?.version;const label=dependency;let id=dependency;
+ if(!names.has(dependency)){id='external-'+dependency;if(!nodes.some(n=>n.id===id))nodes.push({id,label,detail:'声明版本 '+(version||'未指定'),event,col:2,lane:external++,fingerprint:JSON.stringify(resolved),evidence:{commit:snapshot.commit,...m}})}
+ edges.push({from:m.parsed.package.name,to:id,kind:'dependency',evidence:{commit:snapshot.commit,path:m.path},at:event});}}
+ return {nodes,edges,scope:'真实 Cargo 声明依赖 · 仅清单层级，不代表运行调用或完整代码架构'};
+}
+function delta(before,after){const b=new Map(before.nodes.map(n=>[n.id,n]));const a=new Map(after.nodes.map(n=>[n.id,n]));const key=e=>e.from+'→'+e.to;const be=new Set(before.edges.map(key));const ae=new Set(after.edges.map(key));return {added:after.nodes.filter(n=>!b.has(n.id)).map(n=>n.id),removed:before.nodes.filter(n=>!a.has(n.id)).map(n=>n.id),changed:after.nodes.filter(n=>b.has(n.id)&&(b.get(n.id).status!==n.status||b.get(n.id).fingerprint!==n.fingerprint)).map(n=>n.id),edgesAdded:after.edges.filter(e=>!be.has(key(e))).length,edgesRemoved:before.edges.filter(e=>!ae.has(key(e))).length}}
+const api={project,cargo,delta};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
 })(typeof globalThis==='object'?globalThis:this);
 
 (()=>{'use strict';
@@ -77,6 +87,749 @@ const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const $=id=>document.getElementById(id);let cursor=0,timer=null,revision=0,last=null,dataset="real";
 let imported=false;let observation={"repository": "star8592/engineering-chronicle", "device": "master-MS-iCraft-Z890-Arctic", "task_id": "task-mcp-ede956a22afe40fba448d0f4cfbb1c54", "command": "git status --short; git log -8 --format='%H|%aI|%s'; cargo test --workspace --locked", "exit_code": 0, "id": 32475, "output": " M crates/chronicle-cli/src/main.rs\n M crates/chronicle-protocol/check_json_interop.py\n M crates/chronicle-protocol/src/lib.rs\n?? crates/chronicle-protocol/src/policy.rs\n?? docs/adr/ADR-0004.md\nb10b46ccce562028e41a688af423f0726e0f16d8|2026-10-09T03:58:18+08:00|feat(protocol): match Ed25519 signatures against external keys\n41adc4fe9dba1320df197d385331fd376910b56e|2026-10-09T03:51:10+08:00|feat(protocol): add experimental DSSE header envelope framing\nb16bf82b2a22f7007a85d6aed7561d8a10b364ce|2026-10-09T03:44:49+08:00|feat(protocol): validate versioned statement header candidates\n78f066d25868edba84d183937cc12b7f5c1bce2d|2026-10-09T03:36:35+08:00|feat(protocol): reject ambiguous JSON and encode restricted canonical bytes\nbaba9997c9821ae01855acbd74d336e703395065|2026-10-09T03:30:47+08:00|feat(protocol): validate bounded identifiers counters and declared digests\nca8f7f370b2769b11a8d3a148d193f5290479863|2026-10-09T03:21:16+08:00|chore: bootstrap Chronicle workspace and open-source product direction\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s\n     Running unittests src/main.rs (target/debug/deps/chronicle_cli-b45a330d9bc14cb6)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src/lib.rs (target/debug/deps/chronicle_core-7ba39766454ca3bb)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src/lib.rs (target/debug/deps/chronicle_protocol-1d19121e87ad1608)\n\nrunning 52 tests\ntest envelope::tests::official_dsse_pae_vector ... ok\ntest envelope::tests::pae_lengths_are_utf8_bytes_and_preserve_binary_body ... ok\ntest envelope::tests::pae_rejects_oversized_type_and_body ... ok\ntest header::tests::duplicate_keys_rejected_before_map_construction ... ok\ntest json::tests::accepts_valid_surrogate_pair_without_normalizing_unicode ... ok\ntest json::tests::emits_canonical_string_escapes ... ok\ntest json::tests::follows_rfc_property_order_in_utf16_not_utf8 ... ok\ntest json::tests::refuses_non_object_roots ... ok\ntest header::tests::valid_header_preserves_counter_and_canonical_bytes ... ok\ntest header::tests::position_is_closed_and_all_fields_required ... ok\ntest json::tests::depth_boundary_is_enforced_during_parsing ... ok\ntest json::tests::canonicalizes_recursive_objects_and_preserves_array_order ... ok\ntest header::tests::every_root_field_is_required_and_unknown_fields_rejected ... ok\ntest json::tests::canonicalization_is_idempotent ... ok\ntest envelope::tests::valid_candidate_keeps_exact_payload_and_signature_bytes ... ok\ntest envelope::tests::rejects_duplicate_keys_in_outer_and_inner_documents ... ok\ntest envelope::tests::missing_and_empty_key_hint_are_equivalent_and_do_not_affect_pae ... ok\ntest header::tests::numeric_tokens_and_counter_overflow_rejected ... ok\ntest json::tests::rejects_decoded_duplicate_keys_at_any_level ... ok\ntest json::tests::rejects_lone_surrogates_invalid_utf8_and_trailing_data ... ok\ntest json::tests::rejects_numeric_tokens_including_negative_zero ... ok\ntest policy::tests::empty_policy_denies_and_revocation_overrides_a_grant ... ok\ntest envelope::tests::refuses_wrong_type_unknown_fields_and_missing_fields ... ok\ntest envelope::tests::accepts_both_base64_alphabets_with_or_without_padding ... ok\ntest envelope::tests::rejects_reencoding_payload_even_when_json_semantics_match ... ok\ntest header::tests::rejects_wrong_types_without_coercion ... ok\ntest header::tests::rejects_unknown_schema_and_invalid_primitives ... ok\ntest signature::tests::rejects_oversized_message_before_crypto_work ... ok\ntest tests::counter_accepts_zero_and_full_unsigned_range_without_rounding ... ok\ntest tests::counter_overflow_is_explicit_and_never_wraps ... ok\ntest signature::tests::rejects_weak_keys_low_order_r_and_noncanonical_scalar ... ok\ntest tests::counter_rejects_ambiguous_numeric_representations ... ok\ntest tests::digest_rejects_wrong_algorithm_case_length_and_non_hex ... ok\ntest tests::identifier_accepts_bounded_ascii_names ... ok\ntest tests::digest_preserves_exact_declared_value ... ok\ntest tests::identifier_rejects_empty_and_oversized_inputs ... ok\ntest tests::identifier_rejects_paths_unicode_and_control_bytes ... ok\ntest policy::tests::strict_policy_shape_versions_duplicates_and_types ... ok\ntest envelope::tests::rejects_bad_base64_signature_lengths_and_counts ... ok\ntest policy::tests::rejects_duplicate_limits_bad_keys_and_counter_syntax ... ok\ntest signature::independent_fixture_test::python_generated_dsse_signature_matches_exact_candidate ... ok\ntest policy::tests::revoked_unrelated_key_and_extra_bad_signature_do_not_block_valid_grant ... ok\ntest policy::tests::no_matching_signature_and_forged_hint_cannot_authorize ... ok\ntest policy::tests::authorized_result_binds_exact_policy_and_envelope ... ok\ntest signature::tests::successful_match_binds_key_index_and_exact_candidate ... ok\ntest signature::tests::rfc8032_vectors_empty_one_and_two_byte_messages ... ok\ntest json::tests::size_boundary_is_enforced_before_parsing ... ok\ntest signature::tests::key_hint_changes_never_change_cryptographic_result ... ok\ntest policy::tests::sequence_range_is_inclusive_and_cannot_be_bypassed ... ok\ntest signature::tests::payload_change_and_raw_payload_signature_fail ... ok\ntest policy::tests::valid_signatures_outside_any_scope_dimension_are_denied ... ok\ntest signature::tests::rejects_every_single_byte_signature_mutation_and_changed_message ... ok\n\ntest result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s\n\n     Running unittests src/main.rs (target/debug/deps/chronicle_verifier-37f5452e0ee44591)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests chronicle_core\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests chronicle_protocol\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n", "output_next_offset": 6097, "output_offset": 0, "output_total_bytes": 6097, "output_truncated": false, "status": "exited", "term_signal": null, "termination_unknown": false, "timed_out": false};
 let realEvents=[{"time": "2026-10-09T03:21:16+08:00", "title": "建立独立 Rust 工程", "type": "提交", "commit": "ca8f7f370b2769b11a8d3a148d193f5290479863", "text": "chore: bootstrap Chronicle workspace and open-source product direction", "log": "git commit ca8f7f370b2769b11a8d3a148d193f5290479863\nchore: bootstrap Chronicle workspace and open-source product direction\nauthor time: 2026-10-09T03:21:16+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/ca8f7f370b2769b11a8d3a148d193f5290479863"}, {"time": "2026-10-09T03:30:47+08:00", "title": "加入协议基础类型", "type": "提交", "commit": "baba9997c9821ae01855acbd74d336e703395065", "text": "feat(protocol): validate bounded identifiers counters and declared digests", "log": "git commit baba9997c9821ae01855acbd74d336e703395065\nfeat(protocol): validate bounded identifiers counters and declared digests\nauthor time: 2026-10-09T03:30:47+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/baba9997c9821ae01855acbd74d336e703395065"}, {"time": "2026-10-09T03:36:35+08:00", "title": "加入受限 JSON 编码", "type": "提交", "commit": "78f066d25868edba84d183937cc12b7f5c1bce2d", "text": "feat(protocol): reject ambiguous JSON and encode restricted canonical bytes", "log": "git commit 78f066d25868edba84d183937cc12b7f5c1bce2d\nfeat(protocol): reject ambiguous JSON and encode restricted canonical bytes\nauthor time: 2026-10-09T03:36:35+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/78f066d25868edba84d183937cc12b7f5c1bce2d"}, {"time": "2026-10-09T03:44:49+08:00", "title": "加入严格 header 校验", "type": "提交", "commit": "b16bf82b2a22f7007a85d6aed7561d8a10b364ce", "text": "feat(protocol): validate versioned statement header candidates", "log": "git commit b16bf82b2a22f7007a85d6aed7561d8a10b364ce\nfeat(protocol): validate versioned statement header candidates\nauthor time: 2026-10-09T03:44:49+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/b16bf82b2a22f7007a85d6aed7561d8a10b364ce"}, {"time": "2026-10-09T03:51:10+08:00", "title": "加入 DSSE 封套与待签编码", "type": "提交", "commit": "41adc4fe9dba1320df197d385331fd376910b56e", "text": "feat(protocol): add experimental DSSE header envelope framing", "log": "git commit 41adc4fe9dba1320df197d385331fd376910b56e\nfeat(protocol): add experimental DSSE header envelope framing\nauthor time: 2026-10-09T03:51:10+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/41adc4fe9dba1320df197d385331fd376910b56e"}, {"time": "2026-10-09T03:58:18+08:00", "title": "加入 Ed25519 签名匹配", "type": "提交", "commit": "b10b46ccce562028e41a688af423f0726e0f16d8", "text": "feat(protocol): match Ed25519 signatures against external keys", "log": "git commit b10b46ccce562028e41a688af423f0726e0f16d8\nfeat(protocol): match Ed25519 signatures against external keys\nauthor time: 2026-10-09T03:58:18+08:00", "source": "Z890 Git 元数据快照", "url": "https://github.com/star8592/engineering-chronicle/commit/b10b46ccce562028e41a688af423f0726e0f16d8"}, {"time": "2026-10-10 · 本次采集", "title": "当前工作区：52 项测试通过", "type": "通过", "commit": "b10b46ccce562028e41a688af423f0726e0f16d8", "text": "测试实际运行成功。存在 3 个已修改文件与 2 个未跟踪文件；结果绑定当前工作区，未绑定远端提交。", "log": " M crates/chronicle-cli/src/main.rs\n M crates/chronicle-protocol/check_json_interop.py\n M crates/chronicle-protocol/src/lib.rs\n?? crates/chronicle-protocol/src/policy.rs\n?? docs/adr/ADR-0004.md\nb10b46ccce562028e41a688af423f0726e0f16d8|2026-10-09T03:58:18+08:00|feat(protocol): match Ed25519 signatures against external keys\n41adc4fe9dba1320df197d385331fd376910b56e|2026-10-09T03:51:10+08:00|feat(protocol): add experimental DSSE header envelope framing\nb16bf82b2a22f7007a85d6aed7561d8a10b364ce|2026-10-09T03:44:49+08:00|feat(protocol): validate versioned statement header candidates\n78f066d25868edba84d183937cc12b7f5c1bce2d|2026-10-09T03:36:35+08:00|feat(protocol): reject ambiguous JSON and encode restricted canonical bytes\nbaba9997c9821ae01855acbd74d336e703395065|2026-10-09T03:30:47+08:00|feat(protocol): validate bounded identifiers counters and declared digests\nca8f7f370b2769b11a8d3a148d193f5290479863|2026-10-09T03:21:16+08:00|chore: bootstrap Chronicle workspace and open-source product direction\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s\n     Running unittests src/main.rs (target/debug/deps/chronicle_cli-b45a330d9bc14cb6)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src/lib.rs (target/debug/deps/chronicle_core-7ba39766454ca3bb)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running unittests src/lib.rs (target/debug/deps/chronicle_protocol-1d19121e87ad1608)\n\nrunning 52 tests\ntest envelope::tests::official_dsse_pae_vector ... ok\ntest envelope::tests::pae_lengths_are_utf8_bytes_and_preserve_binary_body ... ok\ntest envelope::tests::pae_rejects_oversized_type_and_body ... ok\ntest header::tests::duplicate_keys_rejected_before_map_construction ... ok\ntest json::tests::accepts_valid_surrogate_pair_without_normalizing_unicode ... ok\ntest json::tests::emits_canonical_string_escapes ... ok\ntest json::tests::follows_rfc_property_order_in_utf16_not_utf8 ... ok\ntest json::tests::refuses_non_object_roots ... ok\ntest header::tests::valid_header_preserves_counter_and_canonical_bytes ... ok\ntest header::tests::position_is_closed_and_all_fields_required ... ok\ntest json::tests::depth_boundary_is_enforced_during_parsing ... ok\ntest json::tests::canonicalizes_recursive_objects_and_preserves_array_order ... ok\ntest header::tests::every_root_field_is_required_and_unknown_fields_rejected ... ok\ntest json::tests::canonicalization_is_idempotent ... ok\ntest envelope::tests::valid_candidate_keeps_exact_payload_and_signature_bytes ... ok\ntest envelope::tests::rejects_duplicate_keys_in_outer_and_inner_documents ... ok\ntest envelope::tests::missing_and_empty_key_hint_are_equivalent_and_do_not_affect_pae ... ok\ntest header::tests::numeric_tokens_and_counter_overflow_rejected ... ok\ntest json::tests::rejects_decoded_duplicate_keys_at_any_level ... ok\ntest json::tests::rejects_lone_surrogates_invalid_utf8_and_trailing_data ... ok\ntest json::tests::rejects_numeric_tokens_including_negative_zero ... ok\ntest policy::tests::empty_policy_denies_and_revocation_overrides_a_grant ... ok\ntest envelope::tests::refuses_wrong_type_unknown_fields_and_missing_fields ... ok\ntest envelope::tests::accepts_both_base64_alphabets_with_or_without_padding ... ok\ntest envelope::tests::rejects_reencoding_payload_even_when_json_semantics_match ... ok\ntest header::tests::rejects_wrong_types_without_coercion ... ok\ntest header::tests::rejects_unknown_schema_and_invalid_primitives ... ok\ntest signature::tests::rejects_oversized_message_before_crypto_work ... ok\ntest tests::counter_accepts_zero_and_full_unsigned_range_without_rounding ... ok\ntest tests::counter_overflow_is_explicit_and_never_wraps ... ok\ntest signature::tests::rejects_weak_keys_low_order_r_and_noncanonical_scalar ... ok\ntest tests::counter_rejects_ambiguous_numeric_representations ... ok\ntest tests::digest_rejects_wrong_algorithm_case_length_and_non_hex ... ok\ntest tests::identifier_accepts_bounded_ascii_names ... ok\ntest tests::digest_preserves_exact_declared_value ... ok\ntest tests::identifier_rejects_empty_and_oversized_inputs ... ok\ntest tests::identifier_rejects_paths_unicode_and_control_bytes ... ok\ntest policy::tests::strict_policy_shape_versions_duplicates_and_types ... ok\ntest envelope::tests::rejects_bad_base64_signature_lengths_and_counts ... ok\ntest policy::tests::rejects_duplicate_limits_bad_keys_and_counter_syntax ... ok\ntest signature::independent_fixture_test::python_generated_dsse_signature_matches_exact_candidate ... ok\ntest policy::tests::revoked_unrelated_key_and_extra_bad_signature_do_not_block_valid_grant ... ok\ntest policy::tests::no_matching_signature_and_forged_hint_cannot_authorize ... ok\ntest policy::tests::authorized_result_binds_exact_policy_and_envelope ... ok\ntest signature::tests::successful_match_binds_key_index_and_exact_candidate ... ok\ntest signature::tests::rfc8032_vectors_empty_one_and_two_byte_messages ... ok\ntest json::tests::size_boundary_is_enforced_before_parsing ... ok\ntest signature::tests::key_hint_changes_never_change_cryptographic_result ... ok\ntest policy::tests::sequence_range_is_inclusive_and_cannot_be_bypassed ... ok\ntest signature::tests::payload_change_and_raw_payload_signature_fail ... ok\ntest policy::tests::valid_signatures_outside_any_scope_dimension_are_denied ... ok\ntest signature::tests::rejects_every_single_byte_signature_mutation_and_changed_message ... ok\n\ntest result: ok. 52 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s\n\n     Running unittests src/main.rs (target/debug/deps/chronicle_verifier-37f5452e0ee44591)\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests chronicle_core\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n   Doc-tests chronicle_protocol\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n", "source": "DevControl 只读命令观察 · 非签名证明", "url": "https://github.com/star8592/engineering-chronicle/pull/1"}];
+const cargoArchive={
+  "format": "chronicle-cargo-snapshots/1",
+  "repository": "star8592/engineering-chronicle",
+  "origin": "git-show committed objects; not working tree",
+  "snapshots": [
+    {
+      "commit": "ca8f7f370b2769b11a8d3a148d193f5290479863",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "d1dccbf3ec97c7132cab6c69abcb898b96a55379b9fc01fa9d24b28fbf1a59b0",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "99622456a9d09a3a38ab1dd0835856302ff8c6475d4b4f40b37e2171c5dcca91",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "baba9997c9821ae01855acbd74d336e703395065",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "d1dccbf3ec97c7132cab6c69abcb898b96a55379b9fc01fa9d24b28fbf1a59b0",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "99622456a9d09a3a38ab1dd0835856302ff8c6475d4b4f40b37e2171c5dcca91",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "78f066d25868edba84d183937cc12b7f5c1bce2d",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "01c67dca6b093722c96b78259f4790bf4dc9fedac01b18dc86bd93639e75fe6c",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "b16bf82b2a22f7007a85d6aed7561d8a10b364ce",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "01c67dca6b093722c96b78259f4790bf4dc9fedac01b18dc86bd93639e75fe6c",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "41adc4fe9dba1320df197d385331fd376910b56e",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "b43c1853ad57d77a1b6a2942bac22e0d49cbf75e0ed4466945a0997d3ef56b3a",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\nbase64 = \"=0.22.1\"\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151",
+              "base64": "=0.22.1"
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "commit": "b10b46ccce562028e41a688af423f0726e0f16d8",
+      "manifests": [
+        {
+          "path": "Cargo.toml",
+          "sha256": "f4fcdc58b9c1aa367466cf92725a55e10d48396ba0fe496de572bc30e2809a22",
+          "content": "[workspace]\nmembers = [\"crates/chronicle-protocol\", \"crates/chronicle-core\", \"crates/chronicle-cli\", \"crates/chronicle-verifier\"]\nresolver = \"2\"\n\n[workspace.package]\nversion = \"0.1.0-dev\"\nedition = \"2024\"\nlicense = \"Apache-2.0\"\n\n[workspace.dependencies]\nchronicle-protocol = { path = \"crates/chronicle-protocol\" }\nchronicle-core = { path = \"crates/chronicle-core\" }\n",
+          "parsed": {
+            "workspace": {
+              "members": [
+                "crates/chronicle-protocol",
+                "crates/chronicle-core",
+                "crates/chronicle-cli",
+                "crates/chronicle-verifier"
+              ],
+              "resolver": "2",
+              "package": {
+                "version": "0.1.0-dev",
+                "edition": "2024",
+                "license": "Apache-2.0"
+              },
+              "dependencies": {
+                "chronicle-protocol": {
+                  "path": "crates/chronicle-protocol"
+                },
+                "chronicle-core": {
+                  "path": "crates/chronicle-core"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-core/Cargo.toml",
+          "sha256": "62275c2df7a56ca68e76ba65ed3232edbde32ea5d69ffe830135f35c1cb3e91b",
+          "content": "[package]\nname = \"chronicle-core\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-core",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-cli/Cargo.toml",
+          "sha256": "cee347856c04b3ee20f251227628d6b94180baa6997f68ddb99072e3f6cd807d",
+          "content": "[package]\nname = \"chronicle-cli\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nchronicle-protocol.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-cli",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "chronicle-protocol": {
+                "workspace": true
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-protocol/Cargo.toml",
+          "sha256": "afe09998ebf654b4d0a32360aa6d91655c5ac8fa6df799208570dd42a45a8445",
+          "content": "[package]\nname = \"chronicle-protocol\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n\n[dependencies]\nserde = \"=1.0.228\"\nserde_json = \"=1.0.151\"\nbase64 = \"=0.22.1\"\ned25519-dalek = { version = \"=2.2.0\", default-features = false, features = [\"std\"] }\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-protocol",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            },
+            "dependencies": {
+              "serde": "=1.0.228",
+              "serde_json": "=1.0.151",
+              "base64": "=0.22.1",
+              "ed25519-dalek": {
+                "version": "=2.2.0",
+                "default-features": false,
+                "features": [
+                  "std"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "crates/chronicle-verifier/Cargo.toml",
+          "sha256": "43ffc138600ea7d23a37e10ac935b4e0b05cbb6b11cdd403b22a036ee7a23d8a",
+          "content": "[package]\nname = \"chronicle-verifier\"\nversion.workspace = true\nedition.workspace = true\nlicense.workspace = true\n",
+          "parsed": {
+            "package": {
+              "name": "chronicle-verifier",
+              "version": {
+                "workspace": true
+              },
+              "edition": {
+                "workspace": true
+              },
+              "license": {
+                "workspace": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+;
 let events=realEvents;let graphPrevious=null,graphDataset=null;const graphElements=new Map();
 const expected={"failed-test.log": "80eadf407ef6278bae3da6cd891f3d2ba8eeb7121824f7f68550f2ff9d0b838d", "retest.log": "3b059131f0a1db58167c26fca040f3238d93e1d73c86987460ef43d6dc89ae6a"}; // 固定摘要由生成脚本填入；不是运行时自动信任新内容。
 const files={'failed-test.log':demoEvents[1].log,'retest.log':demoEvents[4].log};
@@ -97,11 +850,11 @@ async function verifyReal(){const rev=++revision;$('mode').textContent='正在�
 $('bundle-file').onchange=async()=>{const file=$('bundle-file').files?.[0];if(!file)return;try{if(file.size>ChronicleBundle.MAX_BYTES)throw Error('记录包超过 1 MiB');const candidate=ChronicleBundle.parse(await file.text());const digest=await hash(candidate.observation.output);if(digest!==candidate.reference_sha256)throw Error('记录包摘要不匹配');stop();observation=candidate.observation;realEvents=candidate.history;observationDigest=candidate.reference_sha256;imported=true;$('dataset').value='real';selectDataset();$('import-status').textContent='已导入 '+realEvents.length+' 条记录 · 来源未认证';await verifyReal()}catch(e){$('import-status').textContent='导入失败：'+e.message}finally{$('bundle-file').value=''}};
 
 
-function renderGraph(){const g=ChronicleGraph.project(events,cursor,dataset);if(dataset==='demo'&&cursor>=4&&$('scenario').value!=='normal'){const n=g.nodes.find(n=>n.id==='retest');if(n){n.status='failed';n.detail={tampered:'日志摘要不匹配',missing:'复测日志缺失',stale:'旧提交证据'}[$('scenario').value]}const b=g.nodes.find(n=>n.id==='bundle');if(b){b.status='failed';b.detail='证据异常 · 不放行'}}
- const same=graphDataset===dataset;const diff=same&&graphPrevious?ChronicleGraph.delta(graphPrevious,g):{added:g.nodes.map(n=>n.id),removed:[],changed:[]};const stage=$('graph-stage');const w=stage.clientWidth||960;const columns=w<440?1:w<680?2:3;const nodeW=Math.min(182,w-32),pad=18,gap=columns===1?0:(w-pad*2-nodeW)/(columns-1);const pos=new Map();g.nodes.forEach((n,i)=>{let col=columns===3?n.col:i%columns;let row=columns===3?n.lane:Math.floor(i/columns);pos.set(n.id,{x:pad+col*gap,y:24+row*138})});const height=columns===3?340:Math.ceil(g.nodes.length/columns)*138+36;stage.style.height=height+'px';const svg=$('graph-edges');svg.setAttribute('viewBox','0 0 '+w+' '+height);svg.innerHTML=g.edges.map(e=>{const a=pos.get(e.from),b=pos.get(e.to);const x1=a.x+nodeW/2,y1=a.y+78/2,x2=b.x+nodeW/2,y2=b.y+78/2;return '<path class="graph-edge '+(e.kind||'')+(e.at===cursor?' active':'')+'" d="M '+x1+' '+y1+' C '+x1+' '+(y1+(y2-y1)/2)+' '+x2+' '+(y1+(y2-y1)/2)+' '+x2+' '+y2+'"/>'}).join('');
+function renderGraph(){const snapshot=dataset==='real'&&!imported?cargoArchive.snapshots.find(s=>s.commit===events[cursor].commit):null;const g=snapshot?ChronicleGraph.cargo(snapshot,cursor):ChronicleGraph.project(events,cursor,dataset);if(snapshot&&cursor===events.length-1)g.scope+='；当前工作区测试未绑定此已提交快照';if(dataset==='demo'&&cursor>=4&&$('scenario').value!=='normal'){const n=g.nodes.find(n=>n.id==='retest');if(n){n.status='failed';n.detail={tampered:'日志摘要不匹配',missing:'复测日志缺失',stale:'旧提交证据'}[$('scenario').value]}const b=g.nodes.find(n=>n.id==='bundle');if(b){b.status='failed';b.detail='证据异常 · 不放行'}}
+ const same=graphDataset===dataset;const diff=same&&graphPrevious?ChronicleGraph.delta(graphPrevious,g):{added:g.nodes.map(n=>n.id),removed:[],changed:[],edgesAdded:g.edges.length};const stage=$('graph-stage');const w=stage.clientWidth||960;const columns=w<440?1:w<680?2:3;const nodeW=Math.min(182,w-32),pad=18,gap=columns===1?0:(w-pad*2-nodeW)/(columns-1);const pos=new Map();g.nodes.forEach((n,i)=>{let col=columns===3?n.col:i%columns;let row=columns===3?n.lane:Math.floor(i/columns);pos.set(n.id,{x:pad+col*gap,y:24+row*138})});const height=columns===3?(Math.max(...g.nodes.map(n=>n.lane))+1)*138+36:Math.ceil(g.nodes.length/columns)*138+36;stage.style.height=height+'px';const svg=$('graph-edges');svg.setAttribute('viewBox','0 0 '+w+' '+height);svg.innerHTML=g.edges.map(e=>{const a=pos.get(e.from),b=pos.get(e.to);const x1=a.x+nodeW/2,y1=a.y+78/2,x2=b.x+nodeW/2,y2=b.y+78/2;return (e.evidence?'<a href="https://github.com/star8592/engineering-chronicle/blob/'+esc(e.evidence.commit)+'/'+esc(e.evidence.path)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(e.from+' 声明依赖 '+e.to)+'">':'')+'<path class="graph-edge '+(e.kind||'')+((snapshot?(!same||!graphPrevious||!graphPrevious.edges.some(p=>p.from===e.from&&p.to===e.to)):e.at===cursor)?' active':'')+'" d="M '+x1+' '+y1+' C '+x1+' '+(y1+(y2-y1)/2)+' '+x2+' '+(y1+(y2-y1)/2)+' '+x2+' '+y2+'"/>'+(e.evidence?'</a>':'')}).join('');
  for(const [id,b] of graphElements)if(!pos.has(id)||!same){b.classList.add('exit');setTimeout(()=>b.remove(),220);graphElements.delete(id)}
- for(const n of g.nodes){let b=graphElements.get(n.id);const isNew=!b;if(!b){b=document.createElement('button');b.type='button';$('graph-nodes').append(b);graphElements.set(n.id,b)}b.className='graph-node '+(n.status||'')+(n.event===cursor?' selected':'')+(isNew?' enter':'');b.style.width=nodeW+'px';b.style.left=pos.get(n.id).x+'px';b.style.top=pos.get(n.id).y+'px';b.innerHTML='<span class="title">'+esc(n.label)+'</span><span class="small">'+esc(n.detail)+'</span>';b.setAttribute('aria-pressed',String(n.event===cursor));b.setAttribute('aria-label',n.label+'，'+n.detail+'，查看事件依据');b.onclick=()=>{stop();cursor=n.event;invalidate();render()}}
- $('graph-scope').textContent=g.scope;$('graph-change').textContent='新增 '+diff.added.length+' · 移出 '+diff.removed.length+' · 状态变化 '+diff.changed.length;$('history-scrub').max=events.length-1;$('history-scrub').value=cursor;$('graph-step').textContent=(cursor+1)+' / '+events.length;graphPrevious=g;graphDataset=dataset;
+ for(const n of g.nodes){let b=graphElements.get(n.id);const isNew=!b;if(!b){b=document.createElement('button');b.type='button';$('graph-nodes').append(b);graphElements.set(n.id,b)}b.className='graph-node '+(n.status||'')+(n.event===cursor&&!n.evidence?' selected':'')+(isNew?' enter':'')+(diff.changed.includes(n.id)?' changed':'');b.style.width=nodeW+'px';b.style.left=pos.get(n.id).x+'px';b.style.top=pos.get(n.id).y+'px';b.innerHTML='<span class="title">'+esc(n.label)+'</span><span class="small">'+esc(n.detail)+'</span>';b.setAttribute('aria-pressed',String(n.event===cursor));b.setAttribute('aria-label',n.label+'，'+n.detail+'，查看事件依据');b.onclick=()=>{stop();cursor=n.event;invalidate();render();if(n.evidence){const m=n.evidence;$('detail').innerHTML='<h3>'+esc(n.label)+'</h3><p>来自已提交 Cargo 清单；点击依据可查看源码。</p><dl class="meta"><dt>文件</dt><dd>'+esc(m.path)+'</dd><dt>提交</dt><dd>'+esc(m.commit)+'</dd><dt>SHA-256</dt><dd>'+esc(m.sha256)+'</dd></dl><a href="https://github.com/star8592/engineering-chronicle/blob/'+esc(m.commit)+'/'+esc(m.path)+'" target="_blank" rel="noopener noreferrer">查看精确版本的清单 ↗</a>';$('log').textContent=m.content}}}
+ $('graph-scope').textContent=g.scope;$('graph-change').textContent='新增 '+diff.added.length+' · 移出 '+diff.removed.length+' · 更新 '+diff.changed.length+' · 新边 '+(diff.edgesAdded||0);$('history-scrub').max=events.length-1;$('history-scrub').value=cursor;$('graph-step').textContent=(cursor+1)+' / '+events.length;graphPrevious=g;graphDataset=dataset;
 }
 $('history-scrub').oninput=()=>{stop();cursor=Number($('history-scrub').value);invalidate();render()};
 if(typeof ResizeObserver==='function')new ResizeObserver(()=>renderGraph()).observe($('graph-stage'));

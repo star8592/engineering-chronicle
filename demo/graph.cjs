@@ -17,6 +17,16 @@ function project(events,cursor,mode){
  const edges=nodes.slice(1).map((n,i)=>({from:nodes[i].id,to:n.id,at:n.at,kind:'order'}));
  return {nodes,edges,scope:'真实记录演化 · 虚线仅表示采集展示顺序；架构依赖未采集'};
 }
-function delta(before,after){const b=new Map(before.nodes.map(n=>[n.id,n]));const a=new Map(after.nodes.map(n=>[n.id,n]));return {added:after.nodes.filter(n=>!b.has(n.id)).map(n=>n.id),removed:before.nodes.filter(n=>!a.has(n.id)).map(n=>n.id),changed:after.nodes.filter(n=>b.has(n.id)&&b.get(n.id).status!==n.status).map(n=>n.id)}}
-const api={project,delta};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
+function cargo(snapshot,event){
+ const rootManifest=snapshot.manifests.find(m=>m.path==='Cargo.toml');
+ const packages=snapshot.manifests.filter(m=>m.parsed.package);const names=new Set(packages.map(m=>m.parsed.package.name));
+ const slots={'chronicle-cli':[0,0],'chronicle-verifier':[1,0],'chronicle-core':[0,1],'chronicle-protocol':[1,1]};const nodes=[],edges=[];let external=0;
+ for(const m of packages){const name=m.parsed.package.name;const [col,lane]=slots[name]||[0,0];nodes.push({id:name,label:name.replace('chronicle-',''),detail:'模块 · Cargo 清单',event,col,lane,fingerprint:m.sha256,evidence:{commit:snapshot.commit,...m}})}
+ for(const m of packages){for(const [dependency,spec] of Object.entries(m.parsed.dependencies||{})){const resolved=typeof spec==='object'&&spec.workspace?rootManifest.parsed.workspace.dependencies[dependency]:spec;const version=typeof resolved==='string'?resolved:resolved?.version;const label=dependency;let id=dependency;
+ if(!names.has(dependency)){id='external-'+dependency;if(!nodes.some(n=>n.id===id))nodes.push({id,label,detail:'声明版本 '+(version||'未指定'),event,col:2,lane:external++,fingerprint:JSON.stringify(resolved),evidence:{commit:snapshot.commit,...m}})}
+ edges.push({from:m.parsed.package.name,to:id,kind:'dependency',evidence:{commit:snapshot.commit,path:m.path},at:event});}}
+ return {nodes,edges,scope:'真实 Cargo 声明依赖 · 仅清单层级，不代表运行调用或完整代码架构'};
+}
+function delta(before,after){const b=new Map(before.nodes.map(n=>[n.id,n]));const a=new Map(after.nodes.map(n=>[n.id,n]));const key=e=>e.from+'→'+e.to;const be=new Set(before.edges.map(key));const ae=new Set(after.edges.map(key));return {added:after.nodes.filter(n=>!b.has(n.id)).map(n=>n.id),removed:before.nodes.filter(n=>!a.has(n.id)).map(n=>n.id),changed:after.nodes.filter(n=>b.has(n.id)&&(b.get(n.id).status!==n.status||b.get(n.id).fingerprint!==n.fingerprint)).map(n=>n.id),edgesAdded:after.edges.filter(e=>!be.has(key(e))).length,edgesRemoved:before.edges.filter(e=>!ae.has(key(e))).length}}
+const api={project,cargo,delta};if(typeof module==='object'&&module.exports)module.exports=api;else root.ChronicleGraph=api;
 })(typeof globalThis==='object'?globalThis:this);
