@@ -32,3 +32,14 @@ node demo/check-state.cjs
 2. 接入 Rust verifier 的机器可读结果，分别显示签名、授权、证据可用性与最新性。
 3. 在真实浏览器上验收 390/1024 像素布局、播放、切换和 JSON 下载。
 4. 采集一次真实失败→修复→复测记录，替换示例闭环；保留原始日志。
+
+## V0.3 商用流程第一步：记录包导入
+
+选择此前导出的 `chronicle-observation/1` JSON；页面在本地解析、校验格式与摘要，再显示其历史。导入包一律显示“来源未认证”，不会信任包内 inspection。当前仅支持本项目未认证观察包，最大1 MiB/16层/128条记录；完整签名证据护照尚未支持。
+
+```sh
+node demo/check-bundle.cjs
+node demo/check-state.cjs
+```
+
+输入恶意HTML只按文本显示，依据链接仅允许当前GitHub仓库的提交和PR。包内声称有签名、授权已验证或允许发布都会被拒绝。浏览器真实文件上传与下载尚待C4验收。首个商用范围与门见 `docs/COMMERCIAL-ALPHA.md`。
